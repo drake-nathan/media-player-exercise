@@ -1,5 +1,20 @@
 # Linear Media Player
 
+## TODO list
+
+- [ ] Update packages, switch to Bun
+- [ ] Add `js-style-kit` for eslint/prettier
+- [ ] Double-check tsconfig settings vs Matt Pocock's
+- [ ] Setup deployment (vercel or fly.io)
+- [ ] Setup vitest with testing-library
+- [ ] Setup CI checks (eslint, prettier, typescript, tests)
+- [ ] Init shadcn & tailwind
+- [ ] Scaffold UI with v0
+- [ ] Connect UI to playlist data
+- [ ] Write some documentation to spin up
+
+## Original Instructions
+
 Hey, thanks for taking the time to work on this exercise. We're excited to see what you come up with –
 the goal is to create an audio player for playing a predefined playlist of audio files. Think of it
 like a stripped-down version of Spotify or the classic Winamp.
@@ -7,9 +22,9 @@ like a stripped-down version of Spotify or the classic Winamp.
 ### Getting started
 
 Clone this repo which was created _just for you_, make it yours and let us know once the project is complete by pushing
-your commits and replying through email. 
+your commits and replying through email.
 
-You can use `npm` to install the dependencies and run the basic React project. Feel free to add any additional libraries 
+You can use `npm` to install the dependencies and run the basic React project. Feel free to add any additional libraries
 or frameworks you need.
 
 ```bash
