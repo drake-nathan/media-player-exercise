@@ -2,9 +2,9 @@
 
 ## TODO list
 
-- [ ] Update packages, switch to Bun
-- [ ] Add `js-style-kit` for eslint/prettier
-- [ ] Double-check tsconfig settings vs Matt Pocock's
+- [x] Update packages, switch to Bun
+- [x] Add `js-style-kit` for eslint/prettier
+- [x] Double-check tsconfig settings vs Matt Pocock's
 - [ ] Setup deployment (vercel or fly.io)
 - [ ] Setup vitest with testing-library
 - [ ] Setup CI checks (eslint, prettier, typescript, tests)
