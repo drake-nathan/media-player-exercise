@@ -11,6 +11,7 @@
 - [ ] Init shadcn & tailwind
 - [ ] Scaffold UI with v0
 - [ ] Connect UI to playlist data
+- [ ] Polish
 - [ ] Write some documentation to spin up
 
 ## Original Instructions
