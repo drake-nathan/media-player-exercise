@@ -5,8 +5,9 @@
 - [x] Update packages, switch to Bun
 - [x] Add `js-style-kit` for eslint/prettier
 - [x] Double-check tsconfig settings vs Matt Pocock's
-- [ ] Setup deployment (vercel or fly.io)
-- [ ] Setup vitest with testing-library
+      ~~- [ ] Setup deployment (vercel or fly.io)~~
+      <!-- I don't have permission to deploy, will skip -->
+- [x] Setup vitest with testing-library
 - [ ] Setup CI checks (eslint, prettier, typescript, tests)
 - [ ] Init shadcn & tailwind
 - [ ] Scaffold UI with v0

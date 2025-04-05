@@ -20,8 +20,9 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2022",
+    "types": ["@testing-library/jest-dom"],
     "useDefineForClassFields": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["src"]
+  "include": ["src", "test"]
 }
