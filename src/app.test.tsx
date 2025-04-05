@@ -7,6 +7,8 @@ describe("App", () => {
   it("renders app", () => {
     render(<App />);
 
-    expect(screen.getByText("Hello World")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Playlists" }),
+    ).toBeInTheDocument();
   });
 });
