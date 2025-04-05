@@ -8,7 +8,7 @@
       ~~- [ ] Setup deployment (vercel or fly.io)~~
       <!-- I don't have permission to deploy, will skip -->
 - [x] Setup vitest with testing-library
-- [ ] Setup CI checks (eslint, prettier, typescript, tests)
+- [x] Setup CI checks (eslint, prettier, typescript, tests)
 - [ ] Init shadcn & tailwind
 - [ ] Scaffold UI with v0
 - [ ] Connect UI to playlist data

@@ -8,8 +8,8 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-    name: Build and Test
+  ci:
+    name: Lint/Test/Format
     runs-on: ubuntu-latest
 
     steps:
