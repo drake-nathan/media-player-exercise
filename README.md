@@ -9,9 +9,10 @@
       <!-- I don't have permission to deploy, will skip -->
 - [x] Setup vitest with testing-library
 - [x] Setup CI checks (eslint, prettier, typescript, tests)
-- [ ] Init shadcn & tailwind
-- [ ] Scaffold UI with v0
-- [ ] Connect UI to playlist data
+- [x] Init shadcn & tailwind
+- [x] Scaffold UI with v0
+- [x] Connect UI to playlist data
+- [ ] Add tests
 - [ ] Polish
 - [ ] Write some documentation to spin up
 

@@ -11,4 +11,6 @@ export const eslint = eslintConfig({
   typescript: "tsconfig.eslint.json",
 });
 
-export const prettier = prettierConfig({});
+export const prettier = prettierConfig({
+  tailwindPlugin: true,
+});
