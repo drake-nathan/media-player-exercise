@@ -121,6 +121,7 @@ export const ControlPanel = ({
           </Button>
           <div className="w-24">
             <Slider
+              aria-label="Volume"
               max={1}
               onValueChange={handleVolumeChange}
               step={0.01}
@@ -131,6 +132,7 @@ export const ControlPanel = ({
       </div>
       <div className="mt-4">
         <Slider
+          aria-label="Seek"
           className="[&>span:first-child]:h-1.5"
           max={currentTrack?.duration ?? 100}
           onValueChange={(value) => {
