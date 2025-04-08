@@ -149,18 +149,19 @@ export const TrackList = (): React.JSX.Element => {
         aria-activedescendant={
           focusedIndex >= 0 ? `track-${focusedIndex}` : undefined
         }
+        aria-label="Tracks in playlist"
         className="space-y-2"
         onBlur={handleListBlur}
         onFocus={handleListFocus}
         onKeyDown={handleKeyDown}
         ref={listRef}
-        role="listbox"
+        role="list"
         tabIndex={0}
       >
         {currentPlaylistData?.tracks.map((track, index) => (
-          <li className="focus-visible:outline-none" key={track.name}>
+          <li className="focus-visible:outline-none" key={track.name} role="listitem">
             <button
-              aria-selected={track.name === currentTrack?.name}
+              aria-current={track.name === currentTrack?.name ? "true" : undefined}
               className={cn(
                 "flex w-full cursor-pointer items-center justify-between rounded-md p-2 hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring",
                 track.name === currentTrack?.name && "bg-muted",
@@ -175,7 +176,6 @@ export const TrackList = (): React.JSX.Element => {
               ref={(el) => {
                 trackRefs.current[index] = el;
               }}
-              role="option"
               tabIndex={-1} // Remove from tab order, will be focused programmatically
               type="button"
             >
