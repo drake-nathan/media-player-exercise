@@ -13,11 +13,15 @@ import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import "./scrollbar.css";
+
 export const TrackList = (): React.JSX.Element => {
   const playlists = useAudioStore((state) => state.playlists);
   const currentPlaylist = useAudioStore((state) => state.currentPlaylist);
   const setCurrentPlaylist = useAudioStore((state) => state.setCurrentPlaylist);
-  const currentPlaylistData = useAudioStore((state) => state.currentPlaylistData);
+  const currentPlaylistData = useAudioStore(
+    (state) => state.currentPlaylistData,
+  );
   const currentTrack = useAudioStore((state) => state.currentTrack);
   const isPlaying = useAudioStore((state) => state.isPlaying);
   const togglePlay = useAudioStore((state) => state.togglePlay);
@@ -110,7 +114,7 @@ export const TrackList = (): React.JSX.Element => {
   };
 
   return (
-    <div className="h-[50vh] flex-1 overflow-auto p-4 pb-[200px] sm:pb-4">
+    <div className="scrollbar-auto h-[50vh] flex-1 overflow-auto p-4 pb-[200px] sm:pb-4">
       {/* Playlist dropdown for small screens */}
       <div className="mb-4 flex items-center justify-between sm:hidden">
         <DropdownMenu>
@@ -123,7 +127,7 @@ export const TrackList = (): React.JSX.Element => {
               <DropdownMenuItem
                 className={cn(
                   "cursor-pointer",
-                  playlist.name === currentPlaylist && "bg-muted"
+                  playlist.name === currentPlaylist && "bg-muted",
                 )}
                 key={playlist.name}
                 onClick={() => {
@@ -136,9 +140,11 @@ export const TrackList = (): React.JSX.Element => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      
+
       {/* Playlist title for larger screens */}
-      <h2 className="mb-4 hidden text-xl font-bold sm:block">{currentPlaylistData?.name}</h2>
+      <h2 className="mb-4 hidden text-xl font-bold sm:block">
+        {currentPlaylistData?.name}
+      </h2>
       <ul
         aria-activedescendant={
           focusedIndex >= 0 ? `track-${focusedIndex}` : undefined
