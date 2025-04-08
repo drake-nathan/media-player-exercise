@@ -1,4 +1,4 @@
-import type { Playlist, Track } from "@/data/get-playlists";
+import type { Track } from "@/data/get-playlists";
 import type { KeyboardEvent } from "react";
 
 import { useAudioStore } from "@/hooks/use-audio-store";
@@ -6,13 +6,8 @@ import { formatDuration } from "@/lib/format-duration";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
-interface Props {
-  currentPlaylistData: Playlist | undefined;
-}
-
-export const TrackList = ({
-  currentPlaylistData,
-}: Props): React.JSX.Element => {
+export const TrackList = (): React.JSX.Element => {
+  const currentPlaylistData = useAudioStore((state) => state.currentPlaylistData);
   const currentTrack = useAudioStore((state) => state.currentTrack);
   const isPlaying = useAudioStore((state) => state.isPlaying);
   const togglePlay = useAudioStore((state) => state.togglePlay);
@@ -105,7 +100,7 @@ export const TrackList = ({
   };
 
   return (
-    <div className="h-[50vh] flex-1 overflow-auto p-4">
+    <div className="h-[50vh] flex-1 overflow-auto p-4 pb-[200px] sm:pb-4">
       <h2 className="mb-4 text-xl font-bold">{currentPlaylistData?.name}</h2>
       <ul
         aria-activedescendant={

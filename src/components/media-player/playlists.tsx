@@ -1,19 +1,12 @@
-import type { Playlist } from "@/data/get-playlists";
-import type { SetState } from "@/lib/types";
+import { useAudioStore } from "@/hooks/use-audio-store";
 
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
-interface Props {
-  currentPlaylist: string;
-  playlists: Playlist[];
-  setCurrentPlaylist: SetState<string>;
-}
+export const Playlists = (): React.JSX.Element => {
+  const playlists = useAudioStore((state) => state.playlists);
+  const currentPlaylist = useAudioStore((state) => state.currentPlaylist);
+  const setCurrentPlaylist = useAudioStore((state) => state.setCurrentPlaylist);
 
-export const Playlists = ({
-  currentPlaylist,
-  playlists,
-  setCurrentPlaylist,
-}: Props): React.JSX.Element => {
   return (
     <div className="w-full border-r p-4 md:w-64">
       <h2 className="mb-4 text-xl font-bold">Playlists</h2>

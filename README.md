@@ -12,7 +12,8 @@
 - [x] Scaffold UI with v0
 - [x] Connect UI to playlist data
 - [x] Add tests (just axe/a11y test for now)
-- [ ] Polish
+- [ ] Optimize re-rendering on playback
+- [ ] Optimize UI for mobile
 - [ ] Write some documentation to spin up
 
 ## Original Instructions
