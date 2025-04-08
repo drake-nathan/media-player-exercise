@@ -8,7 +8,10 @@ export const MediaPlayer = () => {
     <Card className="w-full max-w-4xl rounded-none border-0 p-0 shadow-lg sm:rounded-xl sm:border">
       <CardContent className="p-0">
         <div className="flex flex-col overflow-hidden md:flex-row">
-          <Playlists />
+          {/* Playlists sidebar only visible on medium screens and up */}
+          <div className="hidden md:block">
+            <Playlists />
+          </div>
           <TrackList />
         </div>
         <ControlPanel />

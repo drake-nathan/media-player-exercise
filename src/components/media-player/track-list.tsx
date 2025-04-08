@@ -1,12 +1,22 @@
 import type { Track } from "@/data/get-playlists";
 import type { KeyboardEvent } from "react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useAudioStore } from "@/hooks/use-audio-store";
 import { formatDuration } from "@/lib/format-duration";
 import { cn } from "@/lib/utils";
+import { ChevronDownIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export const TrackList = (): React.JSX.Element => {
+  const playlists = useAudioStore((state) => state.playlists);
+  const currentPlaylist = useAudioStore((state) => state.currentPlaylist);
+  const setCurrentPlaylist = useAudioStore((state) => state.setCurrentPlaylist);
   const currentPlaylistData = useAudioStore((state) => state.currentPlaylistData);
   const currentTrack = useAudioStore((state) => state.currentTrack);
   const isPlaying = useAudioStore((state) => state.isPlaying);
@@ -101,7 +111,34 @@ export const TrackList = (): React.JSX.Element => {
 
   return (
     <div className="h-[50vh] flex-1 overflow-auto p-4 pb-[200px] sm:pb-4">
-      <h2 className="mb-4 text-xl font-bold">{currentPlaylistData?.name}</h2>
+      {/* Playlist dropdown for small screens */}
+      <div className="mb-4 flex items-center justify-between sm:hidden">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex items-center gap-1 text-xl font-bold">
+            {currentPlaylistData?.name}
+            <ChevronDownIcon className="h-5 w-5" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start">
+            {playlists.map((playlist) => (
+              <DropdownMenuItem
+                className={cn(
+                  "cursor-pointer",
+                  playlist.name === currentPlaylist && "bg-muted"
+                )}
+                key={playlist.name}
+                onClick={() => {
+                  setCurrentPlaylist(playlist.name);
+                }}
+              >
+                {playlist.name}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      
+      {/* Playlist title for larger screens */}
+      <h2 className="mb-4 hidden text-xl font-bold sm:block">{currentPlaylistData?.name}</h2>
       <ul
         aria-activedescendant={
           focusedIndex >= 0 ? `track-${focusedIndex}` : undefined
