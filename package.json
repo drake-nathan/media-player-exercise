@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
+    "ci": "bun run format:check && bun run lint:fix && bun run typecheck && bun run test",
+    "predeploy": "bun run build",
+    "deploy": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod",
     "dev": "vite",
     "format": "prettier . --write --cache",
     "format:check": "prettier . --check --cache",

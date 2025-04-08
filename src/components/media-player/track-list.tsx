@@ -124,7 +124,7 @@ export const TrackList = ({
             <button
               aria-selected={track.name === currentTrack?.name}
               className={cn(
-                "hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring flex w-full cursor-pointer items-center justify-between rounded-md p-2",
+                "flex w-full cursor-pointer items-center justify-between rounded-md p-2 hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring",
                 track.name === currentTrack?.name && "bg-muted",
               )}
               id={`track-${index}`}
@@ -143,11 +143,11 @@ export const TrackList = ({
             >
               <div className="flex flex-col items-start gap-1">
                 <div className="truncate font-medium">{track.name}</div>
-                <div className="text-muted-foreground truncate text-sm">
+                <div className="truncate text-sm text-muted-foreground">
                   {currentPlaylistData.artist}
                 </div>
               </div>
-              <div className="text-muted-foreground ml-2 text-sm">
+              <div className="ml-2 text-sm text-muted-foreground">
                 {formatDuration(track.duration)}
               </div>
             </button>

@@ -5,7 +5,7 @@ export const Header = (): React.JSX.Element => {
     <header className="flex justify-between p-4">
       <div className="grid gap-1">
         <h1 className="text-xl font-bold md:text-3xl">Linear Media Player</h1>
-        <h2 className="text-muted-foreground text-lg font-bold md:text-xl">
+        <h2 className="text-lg font-bold text-muted-foreground md:text-xl">
           Nathan Drake
         </h2>
       </div>

@@ -19,7 +19,7 @@ describe("App", () => {
       rules: {
         // Disable the rule for invalid aria attribute values
         // This is needed because Radix UI Tabs component generates aria-controls with spaces
-        'aria-valid-attr-value': { enabled: false },
+        "aria-valid-attr-value": { enabled: false },
       },
     });
 

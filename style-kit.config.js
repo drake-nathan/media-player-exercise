@@ -12,5 +12,5 @@ export const eslint = eslintConfig({
 });
 
 export const prettier = prettierConfig({
-  tailwindPlugin: true,
+  tailwindPlugin: "./src/globals.css",
 });

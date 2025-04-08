@@ -5,14 +5,13 @@
 - [x] Update packages, switch to Bun
 - [x] Add `js-style-kit` for eslint/prettier
 - [x] Double-check tsconfig settings vs Matt Pocock's
-      ~~- [ ] Setup deployment (vercel or fly.io)~~
-      <!-- I don't have permission to deploy, will skip -->
+- [x] Setup deployment (netlify)
 - [x] Setup vitest with testing-library
 - [x] Setup CI checks (eslint, prettier, typescript, tests)
 - [x] Init shadcn & tailwind
 - [x] Scaffold UI with v0
 - [x] Connect UI to playlist data
-- [ ] Add tests
+- [x] Add tests (just axe/a11y test for now)
 - [ ] Polish
 - [ ] Write some documentation to spin up
 

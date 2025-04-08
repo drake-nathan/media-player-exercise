@@ -26,7 +26,7 @@ export const Playlists = ({
         <TabsList className="flex h-auto w-full flex-col items-start justify-start space-y-1 bg-transparent p-0">
           {playlists.map((playlist) => (
             <TabsTrigger
-              className="data-[state=active]:bg-muted w-full justify-start px-3 py-2"
+              className="w-full justify-start px-3 py-2 data-[state=active]:bg-muted"
               key={playlist.name}
               value={playlist.name}
             >
