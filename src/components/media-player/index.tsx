@@ -1,5 +1,4 @@
 import { getPlaylists } from "@/data/get-playlists";
-import { useAudioPlayer } from "@/hooks/use-audio-player";
 import { useState } from "react";
 
 import { Card, CardContent } from "../ui/card";
@@ -18,20 +17,6 @@ export const MediaPlayer = () => {
     (playlist) => playlist.name === currentPlaylist,
   );
 
-  const {
-    changeVolume,
-    currentTime,
-    currentTrack,
-    duration,
-    isPlaying,
-    seek,
-    setCurrentTrack,
-    skipToNext,
-    skipToPrevious,
-    togglePlay,
-    volume,
-  } = useAudioPlayer(currentPlaylistData?.tracks[0] ?? null);
-
   return (
     <Card className="w-full max-w-4xl p-0 shadow-lg">
       <CardContent className="p-0">
@@ -41,27 +26,9 @@ export const MediaPlayer = () => {
             playlists={playlists}
             setCurrentPlaylist={setCurrentPlaylist}
           />
-          <TrackList
-            currentPlaylistData={currentPlaylistData}
-            currentTrack={currentTrack}
-            isPlaying={isPlaying}
-            setCurrentTrack={setCurrentTrack}
-            togglePlay={togglePlay}
-          />
+          <TrackList currentPlaylistData={currentPlaylistData} />
         </div>
-        <ControlPanel
-          changeVolume={changeVolume}
-          currentPlaylistData={currentPlaylistData}
-          currentTime={currentTime}
-          currentTrack={currentTrack}
-          duration={duration}
-          isPlaying={isPlaying}
-          seek={seek}
-          skipToNext={skipToNext}
-          skipToPrevious={skipToPrevious}
-          togglePlay={togglePlay}
-          volume={volume}
-        />
+        <ControlPanel currentPlaylistData={currentPlaylistData} />
       </CardContent>
     </Card>
   );

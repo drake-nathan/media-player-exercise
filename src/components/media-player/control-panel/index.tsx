@@ -1,7 +1,8 @@
-import type { Playlist, Track } from "@/data/get-playlists";
+import type { Playlist } from "@/data/get-playlists";
 
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { useAudioStore } from "@/hooks/use-audio-store";
 import { formatDuration } from "@/lib/format-duration";
 import {
   Pause,
@@ -14,33 +15,24 @@ import {
 import { useState } from "react";
 
 interface Props {
-  changeVolume: (newVolume: number) => void;
   currentPlaylistData: Playlist | undefined;
-  currentTime: number;
-  currentTrack: null | Track;
-  duration: number;
-  isPlaying: boolean;
-  seek: (time: number) => void;
-  skipToNext: (tracks: Track[]) => void;
-  skipToPrevious: (tracks: Track[]) => void;
-  togglePlay: (forceState?: boolean) => void;
-  volume: number;
 }
 
 export const ControlPanel = ({
-  changeVolume,
   currentPlaylistData,
-  currentTime,
-  currentTrack,
-  duration,
-  isPlaying,
-  seek,
-  skipToNext,
-  skipToPrevious,
-  togglePlay,
-  volume,
 }: Props): React.JSX.Element => {
   const [isMuted, setIsMuted] = useState(false);
+
+  const currentTime = useAudioStore((state) => state.currentTime);
+  const currentTrack = useAudioStore((state) => state.currentTrack);
+  const duration = useAudioStore((state) => state.duration);
+  const isPlaying = useAudioStore((state) => state.isPlaying);
+  const volume = useAudioStore((state) => state.volume);
+  const togglePlay = useAudioStore((state) => state.togglePlay);
+  const changeVolume = useAudioStore((state) => state.changeVolume);
+  const seek = useAudioStore((state) => state.seek);
+  const skipToNext = useAudioStore((state) => state.skipToNext);
+  const skipToPrevious = useAudioStore((state) => state.skipToPrevious);
 
   const handleVolumeChange = (value: number[]) => {
     changeVolume(value[0] ?? 0);
