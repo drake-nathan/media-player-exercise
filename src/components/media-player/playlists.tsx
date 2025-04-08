@@ -8,7 +8,7 @@ export const Playlists = (): React.JSX.Element => {
   const setCurrentPlaylist = useAudioStore((state) => state.setCurrentPlaylist);
 
   return (
-    <div className="w-full border-r p-4 md:w-64">
+    <div className="w-full p-4 sm:border-r md:w-64">
       <h2 className="mb-4 text-xl font-bold">Playlists</h2>
       <Tabs
         className="w-full"

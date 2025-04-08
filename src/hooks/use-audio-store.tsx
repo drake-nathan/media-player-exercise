@@ -6,6 +6,7 @@ import { create } from "zustand";
 interface AudioState {
   audio: HTMLAudioElement | null;
   changeVolume: (newVolume: number) => void;
+  currentArtist: string;
   currentPlaylist: string;
   currentPlaylistData: Playlist | undefined;
   currentTime: number;
@@ -16,7 +17,7 @@ interface AudioState {
   playlists: Playlist[];
   seek: (time: number) => void;
   setCurrentPlaylist: (playlistName: string) => void;
-  setTrack: (track: Track | undefined) => void;
+  setTrack: (track: Track | undefined, artist?: string) => void;
   skipToNext: () => void;
   skipToPrevious: () => void;
   togglePlay: (forceState?: boolean) => void;
@@ -67,6 +68,7 @@ export const useAudioStore = create<AudioState>((set, get) => {
       audio.volume = volumeValue;
       set({ volume: volumeValue });
     },
+    currentArtist: playlists[0]?.artist ?? "",
     currentPlaylist: playlists[0]?.name ?? "",
     currentPlaylistData: playlists[0],
     currentTime: 0,
@@ -88,21 +90,45 @@ export const useAudioStore = create<AudioState>((set, get) => {
         (playlist) => playlist.name === playlistName,
       );
 
+      // Only update the playlist information, but don't change the track
       set({
         currentPlaylist: playlistName,
         currentPlaylistData: newPlaylistData,
       });
 
-      // Set the first track of the new playlist if available
-      if (newPlaylistData?.tracks.length) {
+      // Only set the initial track if there is no current track playing
+      // This will only happen on first load or if all tracks are cleared
+      const { currentTrack } = get();
+      if (!currentTrack && newPlaylistData?.tracks.length) {
         get().setTrack(newPlaylistData.tracks[0]);
       }
     },
-    setTrack: (track) => {
-      const { audio, isPlaying } = get();
+    setTrack: (track, artist) => {
+      const { audio, currentPlaylistData, isPlaying, playlists } = get();
       if (!audio) return;
 
-      set({ currentTrack: track, isLoading: true });
+      // Find the artist for this track if not provided
+      let trackArtist = artist;
+      if (!trackArtist && track) {
+        // First check if the track is in the current playlist
+        if (currentPlaylistData?.tracks.some((t) => t.name === track.name)) {
+          trackArtist = currentPlaylistData.artist;
+        } else {
+          // Search all playlists for this track to find its artist
+          for (const playlist of playlists) {
+            if (playlist.tracks.some((t) => t.name === track.name)) {
+              trackArtist = playlist.artist;
+              break;
+            }
+          }
+        }
+      }
+
+      set({
+        currentArtist: trackArtist ?? "",
+        currentTrack: track,
+        isLoading: true,
+      });
 
       if (track?.url) {
         audio.src = track.url;
@@ -126,7 +152,7 @@ export const useAudioStore = create<AudioState>((set, get) => {
 
       if (currentIndex !== -1 && currentIndex < tracks.length - 1) {
         const nextTrack = tracks[currentIndex + 1];
-        get().setTrack(nextTrack);
+        get().setTrack(nextTrack, currentPlaylistData.artist);
       }
     },
     skipToPrevious: () => {
@@ -140,7 +166,7 @@ export const useAudioStore = create<AudioState>((set, get) => {
 
       if (currentIndex > 0) {
         const prevTrack = tracks[currentIndex - 1];
-        get().setTrack(prevTrack);
+        get().setTrack(prevTrack, currentPlaylistData.artist);
       }
     },
     togglePlay: (forceState) => {

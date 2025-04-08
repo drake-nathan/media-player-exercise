@@ -5,8 +5,8 @@ import { PlaybackSlider } from "./playback-slider";
 import { VolumeControls } from "./volume-controls";
 
 export const ControlPanel = (): React.JSX.Element => {
-  const currentPlaylistData = useAudioStore((state) => state.currentPlaylistData);
   const currentTrack = useAudioStore((state) => state.currentTrack);
+  const currentArtist = useAudioStore((state) => state.currentArtist);
 
   return (
     <div className="fixed right-0 bottom-0 left-0 z-10 border-t bg-background p-4 sm:relative sm:rounded-b-xl">
@@ -16,7 +16,7 @@ export const ControlPanel = (): React.JSX.Element => {
           <div className="mb-3 text-center">
             <div className="truncate font-medium">{currentTrack.name}</div>
             <div className="truncate text-sm text-muted-foreground">
-              {currentPlaylistData?.artist}
+              {currentArtist}
             </div>
           </div>
         : null}
@@ -34,7 +34,7 @@ export const ControlPanel = (): React.JSX.Element => {
             <div className="min-w-0">
               <div className="truncate font-medium">{currentTrack.name}</div>
               <div className="truncate text-sm text-muted-foreground">
-                {currentPlaylistData?.artist}
+                {currentArtist}
               </div>
             </div>
           </div>
