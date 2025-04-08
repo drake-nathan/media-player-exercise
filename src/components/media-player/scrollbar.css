@@ -23,8 +23,8 @@
 }
 
 .scrollbar-default::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .dark .scrollbar-default::-webkit-scrollbar-thumb {
@@ -42,33 +42,33 @@
 }
 
 .scrollbar-auto::-webkit-scrollbar-track {
-  background: transparent;
   /* Add padding to respect container border radius */
   margin: 8px 0;
+  background: transparent;
 }
 
 .scrollbar-auto::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 20px;
   /* Ensure the thumb doesn't extend beyond the track */
   border: 2px solid transparent;
+  border-radius: 20px;
   background-clip: padding-box;
+  background-color: transparent;
 }
 
 .scrollbar-auto:hover::-webkit-scrollbar-thumb,
 .scrollbar-auto:focus::-webkit-scrollbar-thumb,
 .scrollbar-auto:active::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
   /* Ensure the thumb doesn't extend beyond the track */
   border: 2px solid transparent;
   background-clip: padding-box;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .dark .scrollbar-auto:hover::-webkit-scrollbar-thumb,
 .dark .scrollbar-auto:focus::-webkit-scrollbar-thumb,
 .dark .scrollbar-auto:active::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
   /* Ensure the thumb doesn't extend beyond the track */
   border: 2px solid transparent;
   background-clip: padding-box;
+  background-color: rgba(255, 255, 255, 0.2);
 }

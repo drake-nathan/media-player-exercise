@@ -159,9 +159,15 @@ export const TrackList = (): React.JSX.Element => {
         tabIndex={0}
       >
         {currentPlaylistData?.tracks.map((track, index) => (
-          <li className="focus-visible:outline-none" key={track.name} role="listitem">
+          <li
+            className="focus-visible:outline-none"
+            key={track.name}
+            role="listitem"
+          >
             <button
-              aria-current={track.name === currentTrack?.name ? "true" : undefined}
+              aria-current={
+                track.name === currentTrack?.name ? "true" : undefined
+              }
               className={cn(
                 "flex w-full cursor-pointer items-center justify-between rounded-md p-2 hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring",
                 track.name === currentTrack?.name && "bg-muted",
