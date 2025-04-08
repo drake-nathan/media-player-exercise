@@ -1,10 +1,42 @@
 # Linear Media Player
 
+<https://linear-media-player-nathan-drake.netlify.app/>
+
+<img src="./screenshot.png" alt="screenshot" width="800">
+
+## Walkthrough
+
+First of all, thank you for the take home. I always prefer to be judged on my work. It was a fun project!
+
+The deployed site is at the top of the README. If you want to run it locally, be aware that I used Bun. If you don't have it installed, just use your package manager of choice and create a new lockfile.
+
+### Highlights
+
+#### Audio Player
+
+I initially had the audio player in a hook that was used by the parent card component (MediaPlayer). This worked, but because I was prop drilling to the child components, then entire tree re-rendered every time the playback slider moved, which was multiple times per second. I then tried setting it in Context, but it had the same issue because the Context provider still re-rendered the whole tree.
+
+I finally settled on using Zustand (first time for me). I set all of my state inside of the store so that each child component was only subscribed to the state it needed. Lastly, I broke out the playback slider and volume slider into their own components so that only they re-render when the sliders moved.
+
+> NOTE: If you want to see how it's rendering, uncomment the React Scan script tag in index.html and spin up the dev server.
+
+#### Accessibility
+
+I recently went to a conference (Epic Web Conf) where one of the speakers demoed an a11y concept called a "roving tab index". This was the perfect chance to test it out.
+
+For the track list, v0 initially set the items as clickable divs. This was not focusable at all. Buttons worked better, but that meant that a keyboard user would need to tab through the entire track list to get to the playblack controls.
+
+With a roving tab index, the user can tab into the list, navigate with arrow keys, and then tab straight to the playblack controls.
+
+#### Mobile / Light Mode
+
+<img src="./screenshot-mobile.png" alt="screenshot" width="300">
+
 ## TODO list
 
 - [x] Update packages, switch to Bun
-- [x] Add `js-style-kit` for eslint/prettier
-- [x] Double-check tsconfig settings vs Matt Pocock's
+- [x] Add `js-style-kit` for eslint/prettier (my own package)
+- [x] Compare tsconfig settings vs Matt Pocock's
 - [x] Setup deployment (netlify)
 - [x] Setup vitest with testing-library
 - [x] Setup CI checks (eslint, prettier, typescript, tests)
@@ -12,9 +44,10 @@
 - [x] Scaffold UI with v0
 - [x] Connect UI to playlist data
 - [x] Add tests (just axe/a11y test for now)
-- [ ] Optimize re-rendering on playback
-- [ ] Optimize UI for mobile
-- [ ] Write some documentation to spin up
+- [x] Optimize re-rendering on playback
+- [x] Optimize UI for mobile
+- [x] Final deploy
+- [x] Write some documentation
 
 ## Original Instructions
 
