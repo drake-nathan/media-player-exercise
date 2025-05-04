@@ -1,12 +1,10 @@
-# Linear Media Player
+# Media Player
 
 <https://linear-media-player-nathan-drake.netlify.app/>
 
-<img src="./screenshot.png" alt="screenshot" width="800">
-
 ## Walkthrough
 
-First of all, thank you for the take home. I always prefer to be judged on my work. It was a fun project!
+Just a fun side project to learn the browser's audio API, Zustand, and a11y.
 
 The deployed site is at the top of the README. If you want to run it locally, be aware that I used Bun. If you don't have it installed, just use your package manager of choice and create a new lockfile.
 
@@ -27,61 +25,6 @@ I recently went to a conference (Epic Web Conf) where one of the speakers demoed
 For the track list, v0 initially set the items as clickable divs. This was not focusable at all. Buttons worked better, but that meant that a keyboard user would need to tab through the entire track list to get to the playblack controls.
 
 With a roving tab index, the user can tab into the list, navigate with arrow keys, and then tab straight to the playblack controls.
-
-#### Mobile / Light Mode
-
-<img src="./screenshot-mobile.png" alt="screenshot" width="300">
-
-## TODO list
-
-- [x] Update packages, switch to Bun
-- [x] Add `js-style-kit` for eslint/prettier (my own package)
-- [x] Compare tsconfig settings vs Matt Pocock's
-- [x] Setup deployment (netlify)
-- [x] Setup vitest with testing-library
-- [x] Setup CI checks (eslint, prettier, typescript, tests)
-- [x] Init shadcn & tailwind
-- [x] Scaffold UI with v0
-- [x] Connect UI to playlist data
-- [x] Add tests (just axe/a11y test for now)
-- [x] Optimize re-rendering on playback
-- [x] Optimize UI for mobile
-- [x] Final deploy
-- [x] Write some documentation
-
-## Original Instructions
-
-Hey, thanks for taking the time to work on this exercise. We're excited to see what you come up with –
-the goal is to create an audio player for playing a predefined playlist of audio files. Think of it
-like a stripped-down version of Spotify or the classic Winamp.
-
-### Getting started
-
-Clone this repo which was created _just for you_, make it yours and let us know once the project is complete by pushing
-your commits and replying through email.
-
-You can use `npm` to install the dependencies and run the basic React project. Feel free to add any additional libraries
-or frameworks you need.
-
-```bash
-npm install
-npm run dev
-```
-
-### Requirements
-
-We'd like to see a working media player that can play through a playlist of audio files (included), display info on the
-currently playing track and supporting basic functionality like play/pause, next track, etc. Beyond that, feel free to get
-creative with the design and functionality.
-
-Plan on spending 2-4 hours to complete this exercise.
-
-Please update this README to include a screenshot of the completed exercise at the top.
-
-### Playlist data
-
-The playlist data is stored in `src/data/playlists.json`. It includes a list of audio files and some associated metadata,
-you can import the json file directly with no need for network requests.
 
 ### Attribution
 
